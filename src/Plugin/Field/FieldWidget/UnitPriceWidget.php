@@ -15,8 +15,8 @@ use Drupal\Core\Form\FormStateInterface;
  * Plugin implementation of the 'interflora_unit_price' widget.
  *
  * @FieldWidget(
- *   id = "interflora_unit_price",
- *   label = @Translation("Interflora unit price"),
+ *   id = "commerce_choose_price",
+ *   label = @Translation("Commerce choose price"),
  *   field_types = {
  *     "commerce_price",
  *   }
