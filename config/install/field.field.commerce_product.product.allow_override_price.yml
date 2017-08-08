@@ -1,0 +1,23 @@
+uuid: ad1fec1c-46a2-4dee-9bf2-9c4325a8917a
+langcode: da
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.product
+    - field.storage.commerce_product.allow_override_price
+id: commerce_product.product.allow_override_price
+field_name: allow_override_price
+entity_type: commerce_product
+bundle: product
+label: 'Allow the user to set the price'
+description: 'Allow the user to set a custom price for this product.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
