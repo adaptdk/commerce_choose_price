@@ -25,7 +25,7 @@ class OrderItemComparisonFieldsEventSubscriber implements EventSubscriberInterfa
   /**
    * {@inheritdoc}
    */
-  static function getSubscribedEvents() {
+  public static function getSubscribedEvents() {
     $events[CartEvents::ORDER_ITEM_COMPARISON_FIELDS][] = ['onOrderItemComparison'];
     return $events;
   }

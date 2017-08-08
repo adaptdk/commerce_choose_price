@@ -84,11 +84,13 @@ class UnitPriceWidget extends WidgetBase {
       '#title' => $this->t('Choose your own price'),
       '#default_value' => $price->toArray(),
       '#element_validate' => [
-        [get_class($this), 'validatePrice']
+        [get_class($this), 'validatePrice'],
       ],
       '#states' => [
         'invisible' => [
-          ':input[name="unit_price[0][override]"]' => ['checked' => FALSE],
+          ':input[name="unit_price[0][override]"]' => [
+            'checked' => FALSE,
+          ],
         ],
       ],
     ];
@@ -117,9 +119,9 @@ class UnitPriceWidget extends WidgetBase {
     }
     else {
       // Sort the variations by price.
-      uasort($variations, function (ProductVariationInterface $a, ProductVariationInterface $b) {
-        $a_price = $a->getPrice();
-        $b_price = $b->getPrice();
+      uasort($variations, function (ProductVariationInterface $prodA, ProductVariationInterface $prodB) {
+        $a_price = $prodA->getPrice();
+        $b_price = $prodB->getPrice();
 
         if ($a_price->equals($b_price)) {
           return 0;
