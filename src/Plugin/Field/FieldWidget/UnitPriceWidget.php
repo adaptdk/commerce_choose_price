@@ -16,7 +16,7 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @FieldWidget(
  *   id = "commerce_choose_price",
- *   label = @Translation("Commerce choose price"),
+ *   label = @Translation("Choose price"),
  *   field_types = {
  *     "commerce_price",
  *   }
@@ -69,8 +69,7 @@ class UnitPriceWidget extends WidgetBase {
     }
     $store = \Drupal::service('commerce_store.store_context')->getStore();
     $context = new Context(\Drupal::currentUser(), $store);
-
-    $price = \Drupal::service('interflora_product.chain_price_display_resolver')->resolve($purchasable_entity, 1, $context);
+    $price = \Drupal::service('commerce_price.chain_price_resolver')->resolve($purchasable_entity, 1, $context);
 
     // The JS that shows the form when the link is clicked should also set
     // the hidden override value to 1.
@@ -95,8 +94,15 @@ class UnitPriceWidget extends WidgetBase {
       ],
     ];
     $element['description'] = [
-      '#type' => 'markup',
+      '#type' => 'item',
       '#markup' => $this->getSetting('description'),
+      '#states' => [
+        'invisible' => [
+          ':input[name="unit_price[0][override]"]' => [
+            'checked' => FALSE,
+          ],
+        ],
+      ],
     ];
 
     return $element;

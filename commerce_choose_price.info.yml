@@ -2,6 +2,6 @@ name: Commerce choose price
 type: module
 description: Allow your customers to set their own price for a product.
 core: 8.x
-package: Commerce (pricing)
+package: Commerce (contrib)
 dependencies:
   - commerce
