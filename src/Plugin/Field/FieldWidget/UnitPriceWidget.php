@@ -67,7 +67,7 @@ class UnitPriceWidget extends WidgetBase {
     if ($product->hasField('allow_override_price') && $product->get('allow_override_price')->value == 0) {
       return $element;
     }
-    $store = \Drupal::service('commerce_store.store_context')->getStore();
+    $store = \Drupal::service('commerce_store.current_store')->getStore();
     $context = new Context(\Drupal::currentUser(), $store);
     $price = \Drupal::service('commerce_price.chain_price_resolver')->resolve($purchasable_entity, 1, $context);
 
