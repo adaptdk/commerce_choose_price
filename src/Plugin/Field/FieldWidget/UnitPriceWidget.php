@@ -154,7 +154,7 @@ class UnitPriceWidget extends WidgetBase {
     $values = NestedArray::getValue($form_state->getValues(), $path);
     if ($values && $values['override']) {
       /** @var \Drupal\commerce_order\Entity\OrderItemInterface $order_item */
-      $order_item = &$items[0]->getEntity();
+      $order_item = $items[0]->getEntity();
       $unit_price = new Price($values['amount']['number'], $values['amount']['currency_code']);
       $order_item->setUnitPrice($unit_price, TRUE);
       // Put delta mapping in $form_state, so that flagErrors() can use it.
